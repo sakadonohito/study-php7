@@ -1,0 +1,13 @@
+{
+	"require-dev": {
+		"phpunit/phpunit": "5.4.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Study\\": "study/",
+			"Controllers\\": "app/controllers/",
+			"Models\\": "app/models/",
+			"Views\\": "app/views/"
+		}
+	}
+}

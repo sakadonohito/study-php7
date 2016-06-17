@@ -1,0 +1,4 @@
+composer.phar
+composer.lock
+.php-version
+vendor
