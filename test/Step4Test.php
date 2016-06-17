@@ -11,7 +11,7 @@ class Stap4Test extends \PHPUnit_Framework_TestCase {
 
     public function test_step4_greet(){
 
-        $step4 = new Step4('Hanako');
+        $step4 = new Step4('Taro');
         $expect = 'Hello Taro';
         $this->assertEquals($expect,$step4->greet(),'名前が一致しない。引数が間違っているのでは？？');
     }

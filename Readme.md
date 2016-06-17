@@ -16,20 +16,20 @@ vendorディレクトリが作成される。
 ## Step2: namespaceを試す
 
 PHP5.3以降namespaceを定義して使える。
-studyディレクトリを作成し、その中にstep2.phpを作成し
+studyディレクトリを作成し、その中にStep2.phpを作成し
 namespaceはStudy、class名はStep2中身は適当につくる。
 
 出力用のstudy/zatsuyou.phpを作成。  
-step2.phpをrequire_onceしてuse句でStudy\Step2を指定。
+Step2.phpをrequire_onceしてuse句でStudy\Step2を指定。
 そうしないとnamespace外から参照できない。
 
 ## Step3: autoload.phpを試す
 
 昨今では、最初にautoload.phpのみをrequire_onceして、以後のクラスの読み込みはautoloaderに任せる。
 
-### step3.phpの作成
+### Step3.phpの作成
 
-study/step3.phpを作成し、autoloadを読み込み、Step2クラスを扱う処理を作成する。
+study/Step3.phpを作成し、autoloadを読み込み、Step2クラスを扱う処理を作成する。
 
 composer.jsonにautoloadの項目を追加
 
@@ -108,6 +108,33 @@ testディレクトリに移動し
 ```
 
 これでカレントにあるphpunit.xmlを読み込んでphunit実行になる。
+
+## Step5: Closureを試す
+
+JavaScript位直感的に使えればいいんだけどね。。
+study/Step5.phpに無名関数を使うクラスを作成
+無名関数に定義元？の変数とかを参照させたい場合は
+```
+function () use(&$hoge){ return ... }
+```
+とかすると無名関数内で参照できる。
+本当はarray_mapなんかでやろうかと思ったんだけど、PHPっぽくないという事なので単純なのにした。
+
+test/Step5Test.phpにテストを書く
+
+## Step6: Traitを試す
+
+完全に同じ機能を複数のクラスで使いたい場合、共通のクラスを作って継承させるが、性格が違う場合は無理がある。それぞれ実装するのも何か違う。
+
+- study/Step6Trait.phpにTraitを定義。
+  - namespaceはStudy
+- study/Step6Hoge.phpを作成し、Traitを使うクラスStep6Hogeを定義
+  - namespaceはStudy
+  - class定義内に`use Step6Trait`を記述
+- study/Step6Fuga.phpを作成し、Traitを使うクラスStep6Fugaを定義
+  - namespaceはStudy
+  - class定義内に`use Step6Trait`を記述
+- test/Step6Test.phpでそれらを実行して試す。
 
 ## StepX: MVCっぽい感じを試す
 
